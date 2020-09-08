@@ -13,17 +13,42 @@ const Wrapper = styled.div`
     margin: 0 auto;
 `;
 
-const CardWrap = styled.div`
-
+const TopHalf = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: green;
 `;
 
-const Card = styled.div``;
+const AllCards = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  width: 75%;
+  margin: 0 auto;
+  flex-flow: row nowrap;
+`;
 
-const MovieTitle = styled.div``;
+const CardWrap = styled.div`
+  border: 1px solid #26a362;
+  border-radius: 5%;
+  padding: 5%;
+  margin: 3%;
+`;
+
+const Card = styled.div`
+marginTop: 5%;
+`;
+
+const MovieTitle = styled.div`
+  color: #10b55f;
+`;
 
 const Year = styled.div``;
 
-const Cover = styled.div``;
+const Cover = styled.div`
+
+  margin-top: 5%;
+`;
 
 
 
@@ -35,7 +60,6 @@ const Movies = (props) => {
 
     const [data, setData] = useState([[]]);
     const [query, setQuery] = useState("");
-    const [normal, setNormal] = useState();
     const [nom, setNom] = useState([]);
 
       useEffect(() => {
@@ -57,6 +81,8 @@ const Movies = (props) => {
     return (
         <Wrapper>
 
+        <TopHalf>
+
             <Title>
                 <h2>Movies up for Nomination</h2>
             </Title>
@@ -76,6 +102,8 @@ const Movies = (props) => {
                 </Form.Group>
             </Form>
 
+            </TopHalf>
+
             <AllCards>
 
               {data ? (
@@ -85,14 +113,12 @@ const Movies = (props) => {
                  <CardWrap>
                  <Card>
                  <MovieTitle>
-                    <h5>{Object.values([props.Title])}</h5>
+                    <h3>{Object.values([props.Title])}</h3>
                   </MovieTitle>
                   <Year>
                     <h2>{Object.values([props.Year])}</h2>
                   </Year>
-                  <Cover>
-                    <img src={Object.values([props.Poster])} alt="cover art for said film"/>
-                  </Cover>
+                  <button>Nominate</button>                  
                   </Card>
                 </CardWrap>
                 ))
