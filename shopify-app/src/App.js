@@ -13,6 +13,18 @@ const Wrapper = styled.div`
     margin: 0 auto;
 `;
 
+const CardWrap = styled.div`
+
+`;
+
+const Card = styled.div``;
+
+const MovieTitle = styled.div``;
+
+const Year = styled.div``;
+
+const Cover = styled.div``;
+
 
 
 const Box = styled.div``;
@@ -64,20 +76,29 @@ const Movies = (props) => {
                 </Form.Group>
             </Form>
 
-            <div>
+            <AllCards>
 
               {data ? (
 
 
                 data.map((props) => (
-                 <div>
-                    <h2>{Object.values([props.Title])}</h2>
+                 <CardWrap>
+                 <Card>
+                 <MovieTitle>
+                    <h5>{Object.values([props.Title])}</h5>
+                  </MovieTitle>
+                  <Year>
                     <h2>{Object.values([props.Year])}</h2>
-                </div>
+                  </Year>
+                  <Cover>
+                    <img src={Object.values([props.Poster])} alt="cover art for said film"/>
+                  </Cover>
+                  </Card>
+                </CardWrap>
                 ))
               ) : (<div></div>)}
 
-            </div>
+            </AllCards>
         
         </Wrapper>
     )
