@@ -1,7 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
-
 
 //styling
 import styled from "styled-components";
@@ -11,6 +9,16 @@ import { Button, Form } from "react-bootstrap";
 const Wrapper = styled.div`
     width: 90%;
     margin: 0 auto;
+    textAlign: center;
+`;
+
+const TitleTop = styled.div`
+  margin: 0 auto;
+`;
+
+const TitleTopOne = styled.div`
+  margin: 0 auto;
+  color: #1e9e5b;
 `;
 
 const TopHalf = styled.div`
@@ -40,21 +48,14 @@ marginTop: 5%;
 `;
 
 const MovieTitle = styled.div`
-  color: #10b55f;
+  color: #096937;
 `;
 
-const Year = styled.div``;
-
-const Cover = styled.div`
-
-  margin-top: 5%;
+const Year = styled.div`
+  color: #1e9e5b;
 `;
 
-
-
-const Box = styled.div``;
-
-const Title = styled.div``;
+const Bottom = styled.div``;
 
 const Movies = (props) => {
 
@@ -83,14 +84,21 @@ const Movies = (props) => {
 
         <TopHalf>
 
-            <Title>
-                <h2>Movies up for Nomination</h2>
-            </Title>
+            <TitleTopOne>
+                <h1>The Shoppies</h1>
+            </TitleTopOne>
 
-            <Form>
+            <TitleTop>
+                <h2>Movies up for Nomination</h2>
+            </TitleTop>
+
+            <Form style={{
+              textAlign: "center"
+            }}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Search Movies</Form.Label>
                     <Form.Control 
+                    style={{width: "50%", margin: "0 auto"}}
                     onChange={handleChange}
                     type="text"
                     name="search"
@@ -109,22 +117,27 @@ const Movies = (props) => {
               {data ? (
 
 
-                data.map((props) => (
+                data.map((props, i) => (
                  <CardWrap>
-                 <Card>
+                 <Card key={i}>
                  <MovieTitle>
                     <h3>{Object.values([props.Title])}</h3>
                   </MovieTitle>
                   <Year>
                     <h2>{Object.values([props.Year])}</h2>
                   </Year>
-                  <button>Nominate</button>                  
+                  <Button variant="outline-success" onClick={handleClick}>Nominate</Button>                  
                   </Card>
                 </CardWrap>
                 ))
               ) : (<div></div>)}
 
             </AllCards>
+            <Bottom>
+
+
+            
+            </Bottom>
         
         </Wrapper>
     )
